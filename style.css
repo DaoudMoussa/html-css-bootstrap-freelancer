@@ -6,7 +6,7 @@
 
 .blu-on-white {
     background-color: white;
-    color: #1bbc9b;
+    color: #2d3e50;
     padding: 75px 0;
 }
 
@@ -96,7 +96,7 @@
     font-size: 35px;
 }
 
-.star-draw::before {
+.white-draw::before {
     content: '';
     display: inline-block;
     height: 3px;
@@ -108,13 +108,38 @@
     margin-right: 10px;
 }
 
-.star-draw::after {
+.white-draw::after {
     content: '';
     display: inline-block;
     height: 3px;
     width: 20%;
     max-width: 130px;
     background: white;
+    vertical-align: middle;
+    border-radius: 2px;
+    margin-left: 10px;
+
+}
+
+.blu-draw::before {
+    content: '';
+    display: inline-block;
+    height: 3px;
+    width: 20%;
+    max-width: 130px;
+    background: #2d3e50;
+    vertical-align: middle;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.blu-draw::after {
+    content: '';
+    display: inline-block;
+    height: 3px;
+    width: 20%;
+    max-width: 130px;
+    background: #2d3e50;
     vertical-align: middle;
     border-radius: 2px;
     margin-left: 10px;
@@ -129,8 +154,53 @@
     font-size: 24px;
 }
 
-@media (min-width: 768px) {
+#portfolio h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
 
+.image-box {
+    padding:20px 5px;
+    position: relative;
+    z-index: 1;
+}
+
+.image-box img{
+    max-width: 400px;
+    width: 100%;
+    margin:auto;
+    position: relative;
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top:20px;
+    left: 5px;
+    z-index:1;
+    font-size: 50px;
+    font-weight: 800;
+    transition: opacity 0.2s;
+    width: calc(100% - 10px);
+    height: calc(100% - 40px);
+    background: rgba(26, 188, 156, 0.9);
+    opacity: 0;
+}
+
+.overlay>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    color: white;
+}
+
+.image-box:hover .overlay {
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
     .navbar-header {
         width: 100%
     }
@@ -143,8 +213,6 @@
     .navbar-collapse.collapse {
         display: none!important;
     }
-
-
 }
 
 @media (min-width: 992px) {

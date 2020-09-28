@@ -97,7 +97,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .profile-card h1 {
-    font-weight: 700;
     font-size: 40px;
 }
 
@@ -166,13 +165,11 @@ h1, h2, h3, h4, h5, h6 {
 
 section h2 {
     font-size: 48px;
-    font-weight: 700;
 }
 
 .image-box {
     padding:20px 5px;
     position: relative;
-    z-index: 1;
 }
 
 .img-wrapper {
@@ -185,16 +182,28 @@ section h2 {
     width: 100%;
     margin:auto;
     position: relative;
-    z-index: -1;
 }
 
-.overlay {
+.img-wrapper::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 800;
+    content: '\f067';
+    position: absolute;
+    top:50%;
+    left: 50%;
+    z-index: 2;
+    font-size: 60px;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+    opacity: 0;
+    color: white;
+}
+
+.img-wrapper::after {
+    content: '';
     position: absolute;
     top:0px;
     left: 0px;
-    z-index:1;
-    font-size: 50px;
-    font-weight: 800;
     transition: opacity 0.2s;
     width: 100%;
     max-width: 400px;
@@ -204,16 +213,8 @@ section h2 {
     border-radius: 6px;
 }
 
-.overlay>span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 100px;
-    color: white;
-}
-
-.image-box:hover .overlay {
+.image-box:hover .img-wrapper::after,
+.image-box:hover .img-wrapper::before {
     opacity: 1;
 }
 
@@ -234,8 +235,35 @@ section h2 {
 }
 
 #contact .input-box {
-    padding: 10px;
-    border-bottom: 1px solid #e9ecef;;
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+}
+
+.input-box label {
+    font-size: 12px;
+    color: #148f77;
+    position: absolute;
+    display:none;
+    transition: all 1s;
+    z-index: 0;
+}
+
+.input-box .form-control:focus + label {
+    display:block;
+    animation: showing-up 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes showing-up {
+    from {
+         left: 20px; top: 50%;
+    }
+
+    to {
+        left: 20px; top: 1.5px;
+    }
+
 }
 
 #contact .input-box .form-control {
@@ -243,6 +271,8 @@ section h2 {
     border: 0;
     box-shadow: none;
     color: #2d3e50;
+    position: relative;
+    z-index: 1;
 }
 
 input::-webkit-outer-spin-button,
@@ -269,7 +299,6 @@ input::-webkit-inner-spin-button {
 
 .top-footer h3 {
     font-size: 24px;
-    font-weight: 700;
     margin-bottom: 10px
 }
 
@@ -326,8 +355,6 @@ input::-webkit-inner-spin-button {
 
     .navbar-toggle {
         display: block;
-        /* float: none; */
-        /* float: right; */
     }
 
     .navbar-collapse.collapse {
